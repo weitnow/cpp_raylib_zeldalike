@@ -1,0 +1,44 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build debug",
+            "type": "process",
+            "command": "make",
+            "args": [
+                "PLATFORM=PLATFORM_DESKTOP",
+                "BUILD_MODE=DEBUG",
+                "PROJECT_NAME=${fileBasenameNoExtension}",
+                "DESTDIR=/home/linuxbrew/.linuxbrew",
+                "RAYLIB_LIBTYPE=SHARED",
+                "EXAMPLE_RUNTIME_PATH=/home/linuxbrew/.linuxbrew/lib",
+                "OBJS=*.cpp",
+                "BUILD_MODE=DEBUG"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build release",
+            "type": "process",
+            "command": "make",
+            "args": [
+                "PLATFORM=PLATFORM_DESKTOP",
+                "PROJECT_NAME=${fileBasenameNoExtension}",
+                "DESTDIR=/home/linuxbrew/.linuxbrew",
+                "RAYLIB_LIBTYPE=SHARED",
+                "EXAMPLE_RUNTIME_PATH=/home/linuxbrew/.linuxbrew/lib",
+                "OBJS=*.cpp"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        }
+    ]
+}
