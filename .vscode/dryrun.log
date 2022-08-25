@@ -1,0 +1,12 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/weitnow/cpp_raylib_zeldalike'
+ 
+make game
+make[1]: Entering directory '/home/weitnow/cpp_raylib_zeldalike'
+ 
+make[1]: *** No rule to make target 'main.c', needed by 'game'.
+make: *** [Makefile:388: all] Error 2
+
+make[1]: Leaving directory '/home/weitnow/cpp_raylib_zeldalike'
+make: Leaving directory '/home/weitnow/cpp_raylib_zeldalike'
+ 
