@@ -42,10 +42,13 @@ int main()
         }
 
         
-
+        // draw the map
         DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
 
-        DrawTexturePro(knight, Rectangle{0, 0, 16, 16}, Rectangle{knightPos.x, knightPos.y, 4 * 16, 4 * 16}, Vector2{0,0}, 0.0f, WHITE);
+        // draw the character
+        Rectangle source{0.f, 0.f, (float)knight.width/6.f, (float)knight.height};
+        Rectangle dest{knightPos.x, knightPos.y, 4.f * (float)knight.width/6, 4.f * (float)knight.height};
+        DrawTexturePro(knight, source, dest, Vector2{}, 0.f, WHITE);
 
         EndDrawing();
     }
