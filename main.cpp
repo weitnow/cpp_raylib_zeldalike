@@ -4,17 +4,24 @@
 int main()
 {
     // window dimensions
-    int windowDimension[2];
-    windowDimension[0] = 384;
-    windowDimension[1] = 384;
+    int windowWidth{384};
+    int windowHeight{384};
 
     // intialize the window
-    InitWindow(windowDimension[0], windowDimension[1], "Little Knight");
+    InitWindow(windowWidth, windowHeight, "Little Knight");
+
+    SetTargetFPS(60);
 
     Texture2D map = LoadTexture("nature_tileset/OpenWorldMap24x24.png");
     Vector2 mapPos{0.0, 0.0};
+    float speed{4.0};
 
-    SetTargetFPS(60);
+
+    Texture2D knight = LoadTexture("characters/knight_idle_spritesheet.png");
+    Vector2 knightPos{
+        (float)windowWidth/2.0f - 4.0f * (0.5f * (float)knight.width/6.0f),
+        (float)windowHeight/2.0f - 4.0f * (0.5f * (float)knight.height)
+    };
 
     // game loop
     while (!WindowShouldClose())
@@ -30,12 +37,15 @@ int main()
         if (Vector2Length(direction) != 0.0)
         {
             // set mapPos = mapPos - direction
-            mapPos = Vector2Subtract(mapPos, Vector2Normalize(direction));
+            mapPos = Vector2Subtract(mapPos, Vector2Scale(Vector2Normalize(direction), speed));
+
         }
 
         
 
-        DrawTextureEx(map, direction, 0.0, 4.0, WHITE);
+        DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
+
+        DrawTexturePro(knight, Rectangle{0, 0, 16, 16}, Rectangle{knightPos.x, knightPos.y, 4 * 16, 4 * 16}, Vector2{0,0}, 0.0f, WHITE);
 
         EndDrawing();
     }
