@@ -1,10 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make game
- 
 # make[1]: Entering directory '/home/weitnow/cpp_raylib_zeldalike'
- 
-make[1]: *** No rule to make target 'main.c', needed by 'game'.  Stop.
-
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -12,7 +8,7 @@ make[1]: *** No rule to make target 'main.c', needed by 'game'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Aug 26 10:19:20 2022
+# Make data base, printed on Fri Aug 26 15:06:38 2022
 
 # Variables
 
@@ -85,7 +81,7 @@ FANCYGIT_VERSION = 7.1.8
 # makefile
 CURDIR := /home/weitnow/cpp_raylib_zeldalike
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # automatic
@@ -111,7 +107,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 10470
+VSCODE_PID = 14610
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -213,7 +209,7 @@ LDFLAGS = -L. -L$(RAYLIB_INSTALL_PATH) -L$(RAYLIB_RELEASE_PATH)
 # environment
 MANAGERPID = 2873
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 10470
+GIO_LAUNCHED_DESKTOP_FILE_PID = 14610
 # makefile (from 'Makefile', line 146)
 EXAMPLE_RUNTIME_PATH = $(RAYLIB_RELEASE_PATH)
 # environment
@@ -253,7 +249,6 @@ SUFFIXES :=
 # makefile (from 'Makefile', line 54)
 RAYLIB_LIBTYPE = STATIC
 # default
- 
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
 # makefile (from 'Makefile', line 150)
 CC = g++
@@ -325,6 +320,10 @@ all:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
+ 
+make[1]: *** No rule to make target 'main.c', needed by 'game'.  Stop.
+make: *** [Makefile:388: all] Error 2
+
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 388):
 	$(MAKE) $(MAKEFILE_PARAMS)
@@ -354,10 +353,9 @@ main.c:
 # strcache performance: lookups = 41 / hit rate = 26%
 # hash-table stats:
 # Load=30/8192=0%, Rehash=0, Collisions=0/41=0%
-# Finished Make data base on Fri Aug 26 10:19:20 2022
+# Finished Make data base on Fri Aug 26 15:06:38 2022
 
 # make[1]: Leaving directory '/home/weitnow/cpp_raylib_zeldalike'
- 
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -365,7 +363,7 @@ main.c:
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Aug 26 10:19:20 2022
+# Make data base, printed on Fri Aug 26 15:06:38 2022
 
 # Variables
 
@@ -438,7 +436,7 @@ FANCYGIT_VERSION = 7.1.8
 # makefile
 CURDIR := /home/weitnow/cpp_raylib_zeldalike
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # automatic
@@ -464,7 +462,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 10470
+VSCODE_PID = 14610
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -566,7 +564,7 @@ LDFLAGS = -L. -L$(RAYLIB_INSTALL_PATH) -L$(RAYLIB_RELEASE_PATH)
 # environment
 MANAGERPID = 2873
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 10470
+GIO_LAUNCHED_DESKTOP_FILE_PID = 14610
 # makefile (from 'Makefile', line 146)
 EXAMPLE_RUNTIME_PATH = $(RAYLIB_RELEASE_PATH)
 # environment
@@ -629,6 +627,7 @@ rwildcard = $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2) $(filter $(subs
 # /home/weitnow/src: could not be stat'd.
 # src: could not be stat'd.
 # /opt/homebrew/include: could not be stat'd.
+ 
 # . (device 66307, inode 18614556): 15 files, no impossibilities.
 # /opt/homebrew/lib: could not be stat'd.
 
@@ -642,9 +641,6 @@ obj/%.o: src/%.c
 
 # 1 implicit rules, 0 (0.0%) terminal.
 # Files
-
- 
-make: *** [Makefile:388: all] Error 2
 
 game: main.c
 #  Implicit rule search has not been done.
@@ -735,6 +731,6 @@ main.c:
 # strcache performance: lookups = 42 / hit rate = 28%
 # hash-table stats:
 # Load=30/8192=0%, Rehash=0, Collisions=0/42=0%
-# Finished Make data base on Fri Aug 26 10:19:20 2022
+# Finished Make data base on Fri Aug 26 15:06:38 2022
 
  
