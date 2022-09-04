@@ -22,8 +22,7 @@ int main()
     Character knight(windowWidth, windowHeight);
 
     // create a prob instance
-    Texture2D rock = LoadTexture("nature_tileset/Rock.png");
-    Prob stone(Vector2{0.0,0.0}, rock);
+    Prob rock(Vector2{}, Texture2D{LoadTexture("nature_tileset/Rock.png")});
 
     // game loop
     while (!WindowShouldClose())
@@ -37,7 +36,7 @@ int main()
         DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
 
         // draw the stone
-        stone.Render(knight.getWorldPos());
+        rock.Render(knight.getWorldPos());
 
         // draw and update knight
         knight.tick(GetFrameTime());

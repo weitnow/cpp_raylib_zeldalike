@@ -1,5 +1,4 @@
 #include "raylib.h"
-#include "raymath.h"
 
 class Prob
 {
@@ -9,7 +8,6 @@ public:
 private:
     Texture2D texture{};
     Vector2 worldPos{};
-    Vector2 screenPos{};
     float scale{4.f};
 
 };
