@@ -21,8 +21,11 @@ int main()
     // create a knight instance
     Character knight(windowWidth, windowHeight);
 
-    // create a prob instance
-    Prob rock(Vector2{}, Texture2D{LoadTexture("nature_tileset/Rock.png")});
+    // create a prob array
+    Prob props[2]{
+        Prob{Vector2{600.f, 300.f}, LoadTexture("nature_tileset/Rock.png")},
+        Prob{Vector2{400.f, 500.f}, LoadTexture("nature_tileset/Log.png")}
+    };
 
     // game loop
     while (!WindowShouldClose())
@@ -35,8 +38,12 @@ int main()
         // draw the map
         DrawTextureEx(map, mapPos, 0.0, mapScale, WHITE);
 
-        // draw the stone
-        rock.Render(knight.getWorldPos());
+        // draw the prob array
+        for (auto prob : props) 
+        {
+            prob.Render(knight.getWorldPos());
+        }
+
 
         // draw and update knight
         knight.tick(GetFrameTime());
@@ -48,6 +55,16 @@ int main()
         {
             knight.undoMovement();
         }
+        
+        // check for props collision
+        for (auto prob : props)
+        {
+            if (CheckCollisionRecs(prob.getCollisionRect(knight.getWorldPos()), knight.getCollisionRec()))
+            {
+                knight.undoMovement();
+            }
+        }
+
 
         EndDrawing();
     }
