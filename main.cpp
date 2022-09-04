@@ -33,6 +33,8 @@ int main()
         LoadTexture("characters/goblin_idle_spritesheet.png"),
         LoadTexture("characters/goblin_run_spritesheet.png")
     };
+    // set target of enemy to player
+    goblin.setTarget(&knight);
 
     // game loop
     while (!WindowShouldClose())
@@ -72,6 +74,15 @@ int main()
         }
 
         goblin.tick(GetFrameTime());
+
+        // checking if attackrectangle overlap with enemie if mousebutton is pressed
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        {
+            if (CheckCollisionRecs(goblin.getCollisionRec(), knight.getWeaponCollisionRec()))
+            {
+                goblin.setAlive(false);
+            }
+        }
 
         EndDrawing();
     }
