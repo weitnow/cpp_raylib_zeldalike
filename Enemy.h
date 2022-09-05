@@ -15,6 +15,7 @@ public:
 
 private:
     Character* target;
+    float damagePersSec{10.f};
 };
 
 #endif
