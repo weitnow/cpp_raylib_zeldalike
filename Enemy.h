@@ -12,10 +12,12 @@ public:
     virtual void tick(float deltaTime) override;
     void setTarget(Character* character) {target = character; }
     virtual Vector2 getScreenPos() override;
+    Enemy createEnemy(Vector2 pos, Character* target);
 
 private:
     Character* target;
     float damagePersSec{10.f};
+    float radius{25.f};
 };
 
 #endif
