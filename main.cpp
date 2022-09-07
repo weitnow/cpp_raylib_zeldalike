@@ -26,23 +26,33 @@ int main()
     // create a prob array
     Prob props[2]{
         Prob{Vector2{600.f, 300.f}, LoadTexture("nature_tileset/Rock.png")},
-        Prob{Vector2{400.f, 500.f}, LoadTexture("nature_tileset/Log.png")}};
-
-    
-    // create an array of enemies
-    Enemy* enemies[3] {
-
+        Prob{Vector2{400.f, 500.f}, LoadTexture("nature_tileset/Log.png")}
     };
 
     // create an enemy
     Enemy goblin{
-        Vector2{},
+        Vector2{800.f, 300.f},
         LoadTexture("characters/goblin_idle_spritesheet.png"),
         LoadTexture("characters/goblin_run_spritesheet.png")
     };
 
-    // set target of enemy to player
-    goblin.setTarget(&knight);
+    Enemy slime{
+        Vector2{500.f, 700.f},
+        LoadTexture("characters/slime_idle_spritesheet.png"),
+        LoadTexture("characters/slime_run_spritesheet.png")
+    };
+
+    // create an array of enemies
+    Enemy* enemies[] {
+        &goblin,
+        &slime
+    };
+
+    // set target of enemies to player
+
+    for (auto enemy : enemies) {
+        enemy->setTarget(&knight);
+    }
 
     // game loop
     while (!WindowShouldClose())
@@ -94,14 +104,20 @@ int main()
             }
         }
 
-        goblin.tick(GetFrameTime());
+        for (auto enemy : enemies)
+        {
+            enemy->tick(GetFrameTime());
+        }
 
         // checking if attackrectangle overlap with enemie if mousebutton is pressed
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
         {
-            if (CheckCollisionRecs(goblin.getCollisionRec(), knight.getWeaponCollisionRec()))
+            for (auto enemy : enemies)
             {
-                goblin.setAlive(false);
+                if (CheckCollisionRecs(enemy->getCollisionRec(), knight.getWeaponCollisionRec()))
+                {
+                    enemy->setAlive(false);
+                }
             }
         }
 
