@@ -42,6 +42,8 @@ int main()
         LoadTexture("characters/slime_run_spritesheet.png")
     };
 
+    slime.setScale(2.f);
+
     // create an array of enemies
     Enemy* enemies[] {
         &goblin,

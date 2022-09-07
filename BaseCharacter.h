@@ -13,6 +13,7 @@ public:
     virtual Vector2 getScreenPos() = 0;
     bool getAlive() {return alive;}
     void setAlive(bool isAlive) {alive = isAlive;}
+    virtual void setScale(float newScale) {scale = newScale;}
 
 protected:
     Texture2D texture{LoadTexture("characters/knight_idle_spritesheet.png")};

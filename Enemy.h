@@ -10,9 +10,13 @@ class Enemy : public BaseCharacter
 public:
     Enemy(Vector2 pos, Texture2D idle_texture, Texture2D run_texture);
     virtual void tick(float deltaTime) override;
-    void setTarget(Character* character) {target = character; }
+    void setTarget(Character* character);
     virtual Vector2 getScreenPos() override;
-    Enemy createEnemy(Vector2 pos, Character* target);
+    Enemy createEnemy(  Vector2 pos = Vector2{}, 
+                        Character* target = nullptr, 
+                        Texture2D idle_texture = LoadTexture("characters/goblin_idle_spritesheet.png"),
+                        Texture2D run_texture = LoadTexture("characters/goblin_run_spritesheet.png"));
+    virtual void setScale(float newScale) override;
 
 private:
     Character* target;
